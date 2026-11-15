@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-abd < aait-abd@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: aait-abd <aait-abd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 13:04:07 by aait-abd          #+#    #+#             */
-/*   Updated: 2026/11/15 13:04:08 by aait-abd         ###   ########.fr       */
+/*   Updated: 2026/11/15 15:07:07 by aait-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_char(char c)
+int	ft_print_char(char c)
 {
-    write(1, &c, 1);
-    return (1);
+	write(1, &c, 1);
+	return (1);
 }
