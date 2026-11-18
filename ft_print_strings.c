@@ -6,7 +6,7 @@
 /*   By: aait-abd <aait-abd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 13:03:43 by aait-abd          #+#    #+#             */
-/*   Updated: 2026/11/15 15:17:47 by aait-abd         ###   ########.fr       */
+/*   Updated: 2026/11/17 22:57:19 by aait-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ int	ft_print_strings(char *str)
 
 	if (str == NULL)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		str = "(null)";
 	}
 	i = 0;
 	while (str[i] != '\0')
+	{
+		if (ft_print_char(str[i]) == -1)
+			return (-1);
 		i++;
-	write(1, str, i);
+	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: aait-abd <aait-abd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 13:03:50 by aait-abd          #+#    #+#             */
-/*   Updated: 2026/11/15 15:16:56 by aait-abd         ###   ########.fr       */
+/*   Updated: 2026/11/17 22:44:06 by aait-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,19 @@ static int	ft_count(uintptr_t address)
 	return (count);
 }
 
-static void	ft_putptr_address(uintptr_t address)
+static int	ft_putptr_address(uintptr_t address)
 {
 	const char	*str;
 
 	str = "0123456789abcdef";
 	if (address >= 16)
-		ft_putptr_address(address / 16);
-	write(1, &str[address % 16], 1);
+	{
+		if (ft_putptr_address(address / 16) == -1)
+			return (-1);
+	}
+	if (ft_print_char(str[address % 16]) == -1)
+		return (-1);
+	return (0);
 }
 
 int	ft_print_pointers(void *ptr)
@@ -42,12 +47,15 @@ int	ft_print_pointers(void *ptr)
 
 	if (ptr == NULL)
 	{
-		write(1, "0x0", 3);
-		return (3);
+		if (ft_print_strings("(nil)") == -1)
+			return (-1);
+		return (5);
 	}
 	address = (uintptr_t)ptr;
-	write(1, "0x", 2);
+	if (ft_print_strings("0x") == -1)
+		return (-1);
 	count = ft_count(address) + 2;
-	ft_putptr_address(address);
+	if (ft_putptr_address(address) == -1)
+		return (-1);
 	return (count);
 }

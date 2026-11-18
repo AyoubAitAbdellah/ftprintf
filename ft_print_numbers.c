@@ -6,7 +6,7 @@
 /*   By: aait-abd <aait-abd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 13:03:59 by aait-abd          #+#    #+#             */
-/*   Updated: 2026/11/15 15:15:00 by aait-abd         ###   ########.fr       */
+/*   Updated: 2026/11/17 22:56:19 by aait-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,26 @@ static int	ft_count_digits(long n)
 	return (count);
 }
 
-static void	ft_putnbr(long n)
+static int	ft_putnbr(long n)
 {
 	char	c;
 
 	if (n < 0)
 	{
 		c = '-';
-		write (1, &c, 1);
+		if (ft_print_char(c) == -1)
+			return (-1);
 		n = -n;
 	}
 	if (n >= 10)
-		ft_putnbr(n / 10);
+	{
+		if (ft_putnbr(n / 10) == -1)
+			return (-1);
+	}
 	c = n % 10 + '0';
-	write (1, &c, 1);
+	if (ft_print_char(c) == -1)
+		return (-1);
+	return (0);
 }
 
 int	ft_print_numbers(int n)
@@ -53,6 +59,7 @@ int	ft_print_numbers(int n)
 
 	nb = n;
 	count = ft_count_digits(nb);
-	ft_putnbr(nb);
+	if (ft_putnbr(nb) == -1)
+		return (-1);
 	return (count);
 }

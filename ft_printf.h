@@ -6,7 +6,7 @@
 /*   By: aait-abd <aait-abd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:00:00 by aait-abd          #+#    #+#             */
-/*   Updated: 2026/11/15 15:23:45 by aait-abd         ###   ########.fr       */
+/*   Updated: 2026/11/18 01:47:41 by aait-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdlib.h>
 # include <stdint.h>
 
 int		ft_printf(const char *format, ...);
-int		ft_check_format(char format, va_list *args);
+int		ft_find_format(char format, va_list *args);
 int		ft_print_numbers(int n);
 int		ft_print_unsigned(unsigned int n);
 int		ft_print_hex(unsigned int n, int uppercase);

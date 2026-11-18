@@ -6,7 +6,7 @@
 /*   By: aait-abd <aait-abd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 13:04:03 by aait-abd          #+#    #+#             */
-/*   Updated: 2026/11/15 15:10:57 by aait-abd         ###   ########.fr       */
+/*   Updated: 2026/11/17 22:09:32 by aait-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_count_digits(unsigned int n)
 	return (count);
 }
 
-static void	ft_puthex(unsigned int n, int uppercase)
+static int	ft_puthex(unsigned int n, int uppercase)
 {
 	const char	*str;
 
@@ -34,8 +34,13 @@ static void	ft_puthex(unsigned int n, int uppercase)
 	else
 		str = "0123456789ABCDEF";
 	if (n >= 16)
-		ft_puthex(n / 16, uppercase);
-	write (1, &str[n % 16], 1);
+	{
+		if (ft_puthex(n / 16, uppercase) == -1)
+			return (-1);
+	}
+	if (ft_print_char(str[n % 16]) == -1)
+		return (-1);
+	return (0);
 }
 
 int	ft_print_hex(unsigned int n, int uppercase)
@@ -43,6 +48,7 @@ int	ft_print_hex(unsigned int n, int uppercase)
 	int	count;
 
 	count = ft_count_digits(n);
-	ft_puthex(n, uppercase);
+	if (ft_puthex(n, uppercase) == -1)
+		return (-1);
 	return (count);
 }
