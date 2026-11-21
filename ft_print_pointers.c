@@ -6,13 +6,13 @@
 /*   By: aait-abd <aait-abd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 13:03:50 by aait-abd          #+#    #+#             */
-/*   Updated: 2026/11/17 22:44:06 by aait-abd         ###   ########.fr       */
+/*   Updated: 2026/11/20 02:33:28 by aait-abd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_count(uintptr_t address)
+static int	ft_count(unsigned long address)
 {
 	int	count;
 
@@ -25,7 +25,7 @@ static int	ft_count(uintptr_t address)
 	return (count);
 }
 
-static int	ft_putptr_address(uintptr_t address)
+static int	ft_putptr_address(unsigned long address)
 {
 	const char	*str;
 
@@ -42,8 +42,8 @@ static int	ft_putptr_address(uintptr_t address)
 
 int	ft_print_pointers(void *ptr)
 {
-	int			count;
-	uintptr_t	address;
+	int				count;
+	unsigned long	address;
 
 	if (ptr == NULL)
 	{
@@ -51,7 +51,7 @@ int	ft_print_pointers(void *ptr)
 			return (-1);
 		return (5);
 	}
-	address = (uintptr_t)ptr;
+	address = (unsigned long)ptr;
 	if (ft_print_strings("0x") == -1)
 		return (-1);
 	count = ft_count(address) + 2;

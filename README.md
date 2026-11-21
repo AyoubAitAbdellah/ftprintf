@@ -143,7 +143,7 @@ The number is divided by 16 recursively until the most significant digit is reac
 
 The function `ft_print_pointers()` handles pointer addresses.
 
-The pointer is converted to `uintptr_t` and printed in hexadecimal format with the `0x` prefix.
+The pointer is converted to `unsigned long` and printed in hexadecimal format with the `0x` prefix.
 
 A NULL pointer is handled separately.
 
@@ -182,7 +182,6 @@ The following resources were used to understand the concepts involved in this pr
 - `man 3 stdarg` for variadic functions.
 - `man 2 write` for output operations.
 - [cppreference](https://en.cppreference.com/w/c/io/fprintf) for C output documentation.
-- Compiler warnings and testing against the system's `printf()`.
 
 ## AI Usage
 
@@ -194,4 +193,4 @@ The following tasks involved AI assistance:
 - **Code review:** Reviewing individual functions to identify logical errors, edge cases, and error-handling issues.
 - **Documentation:** Assistance with structuring and drafting this README.
 
-AI assistance was used as a learning and review tool
+AI assistance was used as a learning and review tool.
