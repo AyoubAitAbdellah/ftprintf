@@ -44,6 +44,8 @@ int	ft_printf(const char *format, ...)
 	int		count;
 	va_list	args;
 
+	if (!format)
+		return (-1);
 	va_start(args, format);
 	count = ft_format_process(format, &args);
 	va_end(args);
